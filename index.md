@@ -14,16 +14,35 @@
 json字符串:
 ```
 {
-   type:
-   msg:
-   time:
-   fromUid:
-   fromAvatar: 发送者头像地址[客户端发送不需要]
-   toUid:
-   groupId: 群组id[0-默认,1-聊天室1,2-聊天室2]
+   type: int 0+ 类型
+   msg: string <=512 消息内容
+   time: int 时间戳
+   fromUid: int -1/1+ 发送者uid,-1为系统
+   fromAvatar: string 发送者头像地址[客户端发送不需要]
+   toUid: int 0+ 接受者uid,0为全部
+   groupId: int 0+ 群组id[0-默认,1-聊天室1,2-聊天室2]
 }
 ```
 
-### 登陆
+关于uid
+
+toUid/fromUid|说明
+-|-
+-1|系统
+0|全部
+1+|单用户uid
+
+关于type
+```
+    ERROR(0,"error")
+    ,SYSTEM(1,"system")
+    ,INIT(2,"init")
+    ,CHAT(3,"chat")
+    ,BOARDCAST(4,"boardcast")
+    , GROUP_ADD(11,"add-group")
+    , GROUP_QUIT(12,"quit-group")
+ ```
+
+关于登陆
 - type : 2
 - msg : sid
