@@ -39,12 +39,21 @@ toUid/fromUid|说明
 关于type
 ```
     ERROR(0,"error")
-    ,SYSTEM(1,"system")
-    ,INIT(2,"init")
+    ,TIP(1,"tip") //一般消息
+        , TIP_NEED_LOGIN(11,"tip_login") //提示登陆
+        , TIP_NEED_INIT(11,"tip_init")   //提示初始化
+        , TIP_OFFLINE(12,"tip_offline")   //提示离线
+        , TIP_ONLINE(13,"tip_online")     //提示在线
+        , TIP_INIT_OK(14,"tip_init_ok")  //初始化成功
+    ,ACTION(2,"action")
+        ,ACTION_INIT(21,"action-init")
+        ,ACTION_QUIT(22,"action-quit")
+        ,ACTION_GROUP_ADD(23,"action-add-group")
+        ,ACTION_GROUP_QUIT(24,"action-quit-group")
     ,CHAT(3,"chat")
+        ,CHAT_GIFT(31,"chat-gift") //礼物 暂不支持
+        ,CHAT_FILE(32,"chat-file") //文件 暂不支持
     ,BOARDCAST(4,"boardcast")
-    , GROUP_ADD(11,"add-group")
-    , GROUP_QUIT(12,"quit-group")
  ```
 
 关于登陆
