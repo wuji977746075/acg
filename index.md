@@ -4,6 +4,7 @@
 连接 
 登陆 
 聊天: 私聊 , 入群/群聊 , 退群
+断开
 ```
 
 ### 连接
@@ -19,7 +20,7 @@ json字符串:
 ```
 {
    type: int 0+ 类型
-   msg: string <=512 消息内容
+   msg: string <=512 消息内容[ping/{msgId}/{sid}/...]
    time: int 时间戳
    fromUid: int -1/1+ 发送者uid,-1为系统
    fromAvatar: string 发送者头像地址[客户端发送不需要]
@@ -38,24 +39,22 @@ toUid/fromUid|说明
 
 关于type
 ```
-    ERROR(0,"error")
-    ,TIP(1,"tip") //一般消息
-        , TIP_NEED_LOGIN(11,"tip_login") //提示登陆
-        , TIP_NEED_INIT(11,"tip_init")   //提示初始化
-        , TIP_OFFLINE(12,"tip_offline")   //提示离线
-        , TIP_ONLINE(13,"tip_online")     //提示在线
-        , TIP_INIT_OK(14,"tip_init_ok")  //初始化成功
-    ,ACTION(2,"action")
-        ,ACTION_INIT(21,"action-init")
-        ,ACTION_QUIT(22,"action-quit")
-        ,ACTION_GROUP_ADD(23,"action-add-group")
-        ,ACTION_GROUP_QUIT(24,"action-quit-group")
-    ,CHAT(3,"chat")
-        ,CHAT_GIFT(31,"chat-gift") //礼物 暂不支持
-        ,CHAT_FILE(32,"chat-file") //文件 暂不支持
-    ,BOARDCAST(4,"boardcast")
+    ERROR(0,"错误")
+    ,TIP(1,"消息")
+        , TIP_NEED_LOGIN(11,"消息-需要登陆")
+        , TIP_NEED_INIT(11,"消息-需要初始化") //msg: sid
+        , TIP_OFFLINE(12,"消息-离线")
+        , TIP_ONLINE(13,"消息-在线")
+        , TIP_INIT_OK(14,"消息-初始化成功")
+        , TIP_PUSH_OK(15,"消息-推送成功") // msg: msgId
+        , TIP_PUSH_FAIL(16,"消息-推送失败") // msg: msgId
+    ,ACTION(2,"动作")
+        ,ACTION_INIT(21,"动作-初始化")
+        ,ACTION_QUIT(22,"动作-下线")
+        ,ACTION_GROUP_ADD(23,"动作-入群")
+        ,ACTION_GROUP_QUIT(24,"动作-出群")
+    ,CHAT(3,"聊天") //消息内容
+        ,CHAT_GIFT(31,"聊天-收到礼物") // msg: 礼物id
+        ,CHAT_FILE(32,"聊天-收到文件") // msg: 文件地址
+    ,BOARDCAST(4,"广播") //msg: 广播内容
  ```
-
-关于登陆
-- type : 2
-- msg : sid
