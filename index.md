@@ -48,6 +48,7 @@ toUid/fromUid|说明
         , TIP_INIT_OK(14,"消息-初始化成功")
         , TIP_PUSH_OK(15,"消息-推送成功") // msg: msgId
         , TIP_PUSH_FAIL(16,"消息-推送失败") // msg: msgId
+        , TIP_PUSH_BACK(17,"消息-回撤") // msg: msgId
     ,ACTION(2,"动作")
         ,ACTION_INIT(21,"动作-初始化")
         ,ACTION_QUIT(22,"动作-下线")
