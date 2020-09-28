@@ -22,6 +22,7 @@ json字符串:
    type: int 0+ 类型
    msg: string <=512 消息内容[ping/{msgId}/{sid}/...]
    time: int 时间戳
+   msgId: string 这条消息唯一键
    fromUid: int -1/1+ 发送者uid,-1为系统
    fromAvatar: string 发送者头像地址[客户端发送不需要]
    toUid: int 0+ 接受者uid,0为全部
